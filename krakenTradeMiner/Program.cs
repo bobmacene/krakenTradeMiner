@@ -30,7 +30,7 @@ namespace krakenTradeMiner
                     {
                         action.Invoke();
                         Console.WriteLine($"ApiCall Processed: {DateTime.Now}");
-                        Task.Delay(10 * 3750).Wait();
+                        Task.Delay(3750).Wait();
                     }
 
                     //Task.Delay(60 * 60 * 1000).Wait();
