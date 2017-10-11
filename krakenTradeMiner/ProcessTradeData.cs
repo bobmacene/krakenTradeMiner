@@ -59,15 +59,11 @@ namespace krakenTradeMiner
             }
             else
             {
-                var lastTrdTime = currentTrades.Last().UnixTime;
-
-                var newTrds = latestTrades.Where(x => x.UnixTime > lastTrdTime).OrderBy(x => x.UnixTime);
-
-                if (newTrds.Any())
+                if (latestTrades.Any())
                 {
-                    currentTrades.AddRange(newTrds);
+                    currentTrades.AddRange(latestTrades);
                     shared.Data.OverWriteExistingTrades(currentTrades, jsonPath);
-                    File.AppendAllLines(csvPath, newTrds.Select(x => x.ToString()).ToArray());
+                    File.AppendAllLines(csvPath, latestTrades.Select(x => x.ToString()).ToArray());
                     shared.Log.AddLogEvent("Trades Saved To: ", jsonPath);
                 }
             }
