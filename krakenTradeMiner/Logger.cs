@@ -19,9 +19,9 @@ namespace krakenTradeMiner
 
         public void AddServerTimeToLog(ApiCall api, out string serverTime)
         {
-            long timeTaken;
-            serverTime = api.CallApi(_serverTimeUrl, out timeTaken);
-            var logLine = $"SERVERTIME: {serverTime}\n{DateTime.Now}:    APICALL TIME TAKEN: ms{timeTaken}";
+            var exception = string.Empty;
+            serverTime = api.CallApi(_serverTimeUrl, out exception);
+            var logLine = $"SERVERTIME: {serverTime}\n{DateTime.Now}:    Call Exception: {exception}";
             Log += $"\n{DateTime.Now}:    {logLine}\n";
         }
 

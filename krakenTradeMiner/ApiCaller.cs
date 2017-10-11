@@ -1,40 +1,51 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace krakenTradeMiner
 {
     public interface IApiCall
     {
-        string CallApi(string url);
+        string CallApi(string url, out string exception);
     }
 
     public class ApiCall : IApiCall
     {
-        private DataAccess data = new DataAccess();
-
-        public string CallApi(string url)
+        public string CallApi(string url, out string exception)
         {
+            Task<string> result = null;
+            exception = string.Empty;
+
             using (var http = new HttpClient())
             {
-                var result = http.GetStringAsync(url);
+                try
+                {
+                    result = http.GetStringAsync(url);
+                }
+                catch(Exception ex)
+                {
+                    exception = ex.ToString();
+                }
+                
                 return result.Result;
             }
         }
 
-        public string CallApi(string url, out long timeTaken)
-        {
-            using (var http = new HttpClient())
-            {
-                var sw = new Stopwatch();
-                sw.Start();
+        //public string CallApi(string url, out long timeTaken)
+        //{
+        //    using (var http = new HttpClient())
+        //    {
+        //        var sw = new Stopwatch();
+        //        sw.Start();
 
-                var result = new HttpClient().GetStringAsync(url);
+        //        var result = new HttpClient().GetStringAsync(url);
 
-                sw.Stop();
-                timeTaken = sw.ElapsedMilliseconds;
+        //        sw.Stop();
+        //        timeTaken = sw.ElapsedMilliseconds;
 
-                return result.Result;
-            }
-        }
+        //        return result.Result;
+        //    }
+        //}
     }
 }

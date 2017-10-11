@@ -24,8 +24,9 @@ namespace krakenTradeMiner.Tests
         {
             var path = "https://api.kraken.com/0/public/Trades?pair=XXBTZEUR&since=" + 1482576757925126325;
             var api = new ApiCall();
+            var exception = string.Empty;
 
-            var json = api.CallApi(path);
+            var json = api.CallApi(path, out exception);
 
             var process = new ProcessTradeData();
             var trades = process.ProcessJsonModel(new SharedData(), json, CurrencyPair.BtcEur);
