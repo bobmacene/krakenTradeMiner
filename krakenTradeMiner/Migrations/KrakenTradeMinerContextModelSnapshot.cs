@@ -33,15 +33,18 @@ namespace krakenTradeMiner.Migrations
 
                     b.Property<string>("Pair");
 
-                    b.Property<decimal>("Price");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(30,5)");
 
                     b.Property<DateTime>("Time");
 
                     b.Property<string>("Type");
 
-                    b.Property<decimal>("UnixTime");
+                    b.Property<decimal>("UnixTime")
+                        .HasColumnType("decimal(30,5)");
 
-                    b.Property<decimal>("Volume");
+                    b.Property<decimal>("Volume")
+                        .HasColumnType("decimal(30,8)");
 
                     b.HasKey("Id");
 

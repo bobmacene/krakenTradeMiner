@@ -11,7 +11,7 @@ using System;
 namespace krakenTradeMiner.Migrations
 {
     [DbContext(typeof(KrakenTradeMinerContext))]
-    [Migration("20171012002206_krakenTradeMiner.Models.KrakenTradeMinerContext")]
+    [Migration("20171012110513_krakenTradeMiner.Models.KrakenTradeMinerContext")]
     partial class krakenTradeMinerModelsKrakenTradeMinerContext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,15 +34,18 @@ namespace krakenTradeMiner.Migrations
 
                     b.Property<string>("Pair");
 
-                    b.Property<decimal>("Price");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(30,5)");
 
                     b.Property<DateTime>("Time");
 
                     b.Property<string>("Type");
 
-                    b.Property<decimal>("UnixTime");
+                    b.Property<decimal>("UnixTime")
+                        .HasColumnType("decimal(30,5)");
 
-                    b.Property<decimal>("Volume");
+                    b.Property<decimal>("Volume")
+                        .HasColumnType("decimal(30,8)");
 
                     b.HasKey("Id");
 

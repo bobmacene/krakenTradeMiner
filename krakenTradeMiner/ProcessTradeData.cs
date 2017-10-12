@@ -48,8 +48,14 @@ namespace krakenTradeMiner
 
             if (jsonHasErrors || apiCallFailed)
             {
-                if (apiCallFailed) shared.Log.AddLogEvent($"ApiCall failed: {_apiCallException}\n");
-                else shared.Log.AddLogEvent($"Incorrect json from ApiCall: {json} aborting this run and retrying ApiCall\n");
+                if (apiCallFailed)
+                {
+                    shared.Log.AddLogEvent($"ApiCall failed: {_apiCallException}\n");
+                }
+                else
+                {
+                    shared.Log.AddLogEvent($"Incorrect json from ApiCall: {json} aborting this run and retrying ApiCall\n");
+                }
                 return null;
             }
 

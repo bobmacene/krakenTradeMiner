@@ -3,6 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>netcoreapp2.0</TargetFramework>
 		<StartupObject>krakenTradeMiner.Program</StartupObject>
+    <RuntimeIdentifier>win10-x64</RuntimeIdentifier>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -11,8 +12,8 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0-preview-20171009-10" />
-		<PackageReference Include="MSTest.TestAdapter" Version="1.2.0-beta3" />
-		<PackageReference Include="MSTest.TestFramework" Version="1.2.0-beta3" />
+		<PackageReference Include="MSTest.TestAdapter" Version="1.2.0" />
+		<PackageReference Include="MSTest.TestFramework" Version="1.2.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
 	</ItemGroup>
 	<ItemGroup>

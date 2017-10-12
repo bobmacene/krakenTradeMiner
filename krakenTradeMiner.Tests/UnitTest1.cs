@@ -1,5 +1,7 @@
+using krakenTradeMiner.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Linq;
 
 namespace krakenTradeMiner.Tests
 {
@@ -32,6 +34,19 @@ namespace krakenTradeMiner.Tests
             var trades = process.ProcessJsonModel(new SharedData(), json, CurrencyPair.BtcEur);
 
             Assert.AreEqual(trades[0].Price, 863.73500M);
+        }
+
+        [TestMethod]
+        public void TestGetAllDbItems()
+        {
+            using (var db = new KrakenTradeMinerContext())
+            {
+                var last = db.Trades.ToList().Last();
+                
+                var numberTrades = db.Trades.Count();
+
+                Assert.IsNotNull(last.LastTradeId);
+            }
         }
     }
 }

@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace krakenTradeMiner.Models
 {
@@ -10,15 +8,19 @@ namespace krakenTradeMiner.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(
-                @"Server=(localdb)\mssqllocaldb;Database=krknTrdsDb;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=krknTrdsDb;Trusted_Connection=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Trade>().ToTable("trades");
+            modelBuilder.Entity<Trade>().Property(x => x.Price).HasPrecision(30, 5);
+            modelBuilder.Entity<Trade>().Property(x => x.UnixTime).HasPrecision(30, 5);
+            modelBuilder.Entity<Trade>().Property(x => x.Volume).HasPrecision(30, 8);
         }
+
+       
     }
 
-   
+    
+
 }
