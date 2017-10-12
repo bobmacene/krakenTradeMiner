@@ -19,7 +19,7 @@ namespace krakenTradeMiner
                 var actions = new Action[]
                 {
                     //()=> tradeData.CallApi(shared, CurrencyPair.EthEur),
-                    ()=> tradeData.CallApi(shared, CurrencyPair.BtcEur),
+                    ()=> tradeData.GetTrades(shared, CurrencyPair.BtcEur),
                     //()=> tradeData.CallApi(shared, CurrencyPair.LtcEur),
                     //()=> tradeData.CallApi(shared, CurrencyPair.LtcBtc)
                 };

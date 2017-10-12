@@ -1,9 +1,14 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace krakenTradeMiner.Models
 {
+    [Table("trades")]
     public class Trade
     {
+        [Key]
+        public int Id { get; set; }
         public decimal UnixTime { get; set; }
         public DateTime Time { get; set; }
         public string Pair { get; set; }
@@ -14,7 +19,7 @@ namespace krakenTradeMiner.Models
         public string Miscellaneous { get; set; }
         public long LastTradeId { get; set; }
 
-        public Trade() { }
+        //public Trade() { }
 
         public Trade(string[] jsonTrds, string last, CurrencyPair pair)
         {
