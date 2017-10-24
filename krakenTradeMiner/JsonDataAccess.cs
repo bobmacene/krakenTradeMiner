@@ -6,7 +6,7 @@ using System.Text;
 
 namespace krakenTradeMiner
 {
-    public class DataAccess
+    public class JsonDataAccess
     {
         public T Deserialise<T>(string json)
         {

@@ -40,6 +40,9 @@ namespace krakenTradeMiner.Pairs
 
         public string TradeUrl => "https://api.kraken.com/0/public/Trades?pair=XXBTZEUR&since=";
         public string TradeCsvPath => @"C:\Users\bob\Documents\KrakenDataMiner\Trades\BtcEur\Csv\KrakenTrade_BtcEur.csv";
+        public string IdPriceCsvPath => @"C:\Users\bob\Documents\KrakenDataMiner\Trades\BtcEur\Csv\IdPrice_BtcEur.csv";
+        public string MaIdsCsvPath => @"C:\Users\bob\Documents\KrakenDataMiner\Trades\BtcEur\Csv\MaIds_BtcEur.csv";
+
         public string TradeJsonPath => @"C:\Users\bob\Documents\KrakenDataMiner\Trades\BtcEur\Json\KrakenTrade_BtcEur.json";
     }
 

@@ -11,8 +11,8 @@ using System;
 namespace krakenTradeMiner.Migrations
 {
     [DbContext(typeof(KrakenTradeMinerContext))]
-    [Migration("20171012110513_krakenTradeMiner.Models.KrakenTradeMinerContext")]
-    partial class krakenTradeMinerModelsKrakenTradeMinerContext
+    [Migration("20171017121448_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,12 +21,42 @@ namespace krakenTradeMiner.Migrations
                 .HasAnnotation("ProductVersion", "2.0.0-rtm-26452")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("krakenTradeMiner.Models.DatabaseInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("DbTradeCount");
+
+                    b.Property<int>("MaIdCount");
+
+                    b.Property<int>("MaTradeCount");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DatabaseInfo");
+                });
+
+            modelBuilder.Entity("krakenTradeMiner.Models.MaId", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("IdMa");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MaIds");
+                });
+
             modelBuilder.Entity("krakenTradeMiner.Models.Trade", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Direction");
+
+                    b.Property<bool>("IsMaTrade");
 
                     b.Property<long>("LastTradeId");
 
@@ -49,7 +79,7 @@ namespace krakenTradeMiner.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("trades");
+                    b.ToTable("Trades");
                 });
 #pragma warning restore 612, 618
         }

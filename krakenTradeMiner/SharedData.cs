@@ -6,10 +6,10 @@
     {
         public bool StopApp { get; set; } = false;
         public int Count { get; set; } = 0;
-        public long Since { get; set; } = 1482576757925126325;
+        public long Since { get; set; } = 1451566757925126325;
 
         public Logger Log = new Logger();
         public ApiCall Call = new ApiCall();
-        public DataAccess Data = new DataAccess();
+        public JsonDataAccess JsonData = new JsonDataAccess();
     }
 }

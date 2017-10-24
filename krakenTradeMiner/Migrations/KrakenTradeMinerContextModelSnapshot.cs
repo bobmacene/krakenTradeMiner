@@ -20,12 +20,42 @@ namespace krakenTradeMiner.Migrations
                 .HasAnnotation("ProductVersion", "2.0.0-rtm-26452")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("krakenTradeMiner.Models.DatabaseInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("DbTradeCount");
+
+                    b.Property<int>("MaIdCount");
+
+                    b.Property<int>("MaTradeCount");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DatabaseInfo");
+                });
+
+            modelBuilder.Entity("krakenTradeMiner.Models.MaId", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("IdMa");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MaIds");
+                });
+
             modelBuilder.Entity("krakenTradeMiner.Models.Trade", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Direction");
+
+                    b.Property<bool>("IsMaTrade");
 
                     b.Property<long>("LastTradeId");
 
@@ -48,7 +78,7 @@ namespace krakenTradeMiner.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("trades");
+                    b.ToTable("Trades");
                 });
 #pragma warning restore 612, 618
         }

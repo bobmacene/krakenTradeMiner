@@ -2,27 +2,23 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace krakenTradeMiner.Models
 {
-    [Table("trades")]
     public class Trade
     {
         [Key]
         public int Id { get; set; }
-        [DataType("decimal(30, 5)")]
         public decimal UnixTime { get; set; }
         public DateTime Time { get; set; }
         public string Pair { get; set; }
-        [DataType("decimal(30, 5)")]
         public decimal Price { get; set; }
-        [DataType("decimal(30, 8)")]
         public decimal Volume { get; set; }
         public string Direction { get; set; }
         public string Type { get; set; }
         public string Miscellaneous { get; set; }
         public long LastTradeId { get; set; }
+        public bool IsMaTrade { get; set; } = false;
 
         public Trade() { }
 
@@ -37,12 +33,14 @@ namespace krakenTradeMiner.Models
             Type = jsonTrds[4];
             Miscellaneous = jsonTrds[5];
             LastTradeId = Convert.ToInt64(last);
+            IsMaTrade = false;
         }
 
         public override string ToString()
         {
             return $"Unixtime:, {UnixTime}, Time:, {Time}, Pair:, {Pair}, Price:, {Price}, Volume:, {Volume},"+
-                   $"Direction:, {Direction}, Type:, {Type}, Miscellaneous:, {Miscellaneous}, LastTradeId:, {LastTradeId}";
+                   $"Direction:, {Direction}, Type:, {Type}, Miscellaneous:, {Miscellaneous}, " +
+                   $"LastTradeId:, {LastTradeId}, MaTrade:, {IsMaTrade}";
         }
 
         public override int GetHashCode()
